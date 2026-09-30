@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Conda
+*.conda
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment variables
+.env
+
+# Python testing
+.pytest_cache/
+.coverage
+
+# OS
+.DS_Store
+Thumbs.db
