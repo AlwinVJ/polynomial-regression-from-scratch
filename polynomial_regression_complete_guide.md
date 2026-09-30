@@ -2,6 +2,8 @@
 
 > A practical and mathematical guide to understanding Polynomial Regression before implementing it from scratch with Python and NumPy.
 
+> **Equation notation:** Mathematical expressions are formatted as display equations using LaTeX for clearer rendering in GitHub and other Markdown viewers that support math.
+
 ---
 
 ## Table of Contents
@@ -61,27 +63,27 @@ Examples:
 
 Suppose we have:
 
-\[
+$$
 X = \text{input feature}
-\]
+$$
 
 and
 
-\[
+$$
 Y = \text{target}
-\]
+$$
 
 A regression model attempts to learn a function:
 
-\[
+$$
 f(X) \approx Y
-\]
+$$
 
 After training, the model can produce a prediction:
 
-\[
+$$
 \hat{Y} = f(X)
-\]
+$$
 
 where \(\hat{Y}\) means the model's predicted value.
 
@@ -91,9 +93,9 @@ where \(\hat{Y}\) means the model's predicted value.
 
 Simple Linear Regression assumes that the relationship between \(X\) and \(Y\) can be approximated by a straight line:
 
-\[
+$$
 \hat{y} = w_0 + w_1x
-\]
+$$
 
 For example:
 
@@ -114,9 +116,9 @@ But many real relationships are curved.
 
 For example:
 
-\[
+$$
 y = 2x^2 + 3x + 5
-\]
+$$
 
 A straight line cannot represent this relationship accurately over a sufficiently large range of \(x\).
 
@@ -132,35 +134,35 @@ Polynomial Regression is a regression technique that models the relationship bet
 
 Instead of using only:
 
-\[
+$$
 x
-\]
+$$
 
 we can include:
 
-\[
+$$
 x^2,\ x^3,\ x^4,\ldots,x^n
-\]
+$$
 
 The resulting model can represent curves rather than only straight lines.
 
 For example, a degree-2 polynomial is:
 
-\[
+$$
 \hat{y} = w_0 + w_1x + w_2x^2
-\]
+$$
 
 A degree-3 polynomial is:
 
-\[
+$$
 \hat{y} = w_0 + w_1x + w_2x^2 + w_3x^3
-\]
+$$
 
 A degree-4 polynomial is:
 
-\[
+$$
 \hat{y} = w_0 + w_1x + w_2x^2 + w_3x^3 + w_4x^4
-\]
+$$
 
 The highest exponent determines the **polynomial degree**.
 
@@ -170,19 +172,19 @@ The highest exponent determines the **polynomial degree**.
 
 For a polynomial of degree \(n\):
 
-\[
+$$
 \boxed{
 \hat{y} = w_0 + w_1x + w_2x^2 + \cdots + w_nx^n
 }
-\]
+$$
 
 An equivalent compact form is:
 
-\[
+$$
 \boxed{
 \hat{y} = w_0 + \sum_{j=1}^{n} w_jx^j
 }
-\]
+$$
 
 Where:
 
@@ -198,15 +200,15 @@ Where:
 
 For \(n=3\):
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2+w_3x^3
-\]
+$$
 
 The model has four parameters:
 
-\[
+$$
 w_0,\ w_1,\ w_2,\ w_3
-\]
+$$
 
 ---
 
@@ -216,9 +218,9 @@ This is one of the most important ideas in Polynomial Regression.
 
 At first glance:
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2+w_3x^3
-\]
+$$
 
 looks like a nonlinear model because it contains \(x^2\) and \(x^3\).
 
@@ -226,31 +228,31 @@ However, the model is **linear in its parameters**.
 
 The parameters are:
 
-\[
+$$
 w_0,w_1,w_2,w_3
-\]
+$$
 
 and each appears only to the first power.
 
 We can define transformed features:
 
-\[
+$$
 x_1=x
-\]
+$$
 
-\[
+$$
 x_2=x^2
-\]
+$$
 
-\[
+$$
 x_3=x^3
-\]
+$$
 
 Then:
 
-\[
+$$
 \hat{y}=w_0+w_1x_1+w_2x_2+w_3x_3
-\]
+$$
 
 This has exactly the same form as Multiple Linear Regression.
 
@@ -276,7 +278,7 @@ The key operation is transforming the original feature into polynomial features.
 
 Suppose:
 
-\[
+$$
 X =
 \begin{bmatrix}
 1\\
@@ -284,11 +286,11 @@ X =
 3\\
 4
 \end{bmatrix}
-\]
+$$
 
 For degree 3, transform it into:
 
-\[
+$$
 X_{poly}=
 \begin{bmatrix}
 1 & 1^2 & 1^3\\
@@ -296,11 +298,11 @@ X_{poly}=
 3 & 3^2 & 3^3\\
 4 & 4^2 & 4^3
 \end{bmatrix}
-\]
+$$
 
 Therefore:
 
-\[
+$$
 X_{poly}=
 \begin{bmatrix}
 1 & 1 & 1\\
@@ -308,19 +310,19 @@ X_{poly}=
 3 & 9 & 27\\
 4 & 16 & 64
 \end{bmatrix}
-\]
+$$
 
 The transformation is:
 
-\[
+$$
 X \rightarrow [X,X^2,X^3]
-\]
+$$
 
 For degree \(n\):
 
-\[
+$$
 X \rightarrow [X,X^2,\ldots,X^n]
-\]
+$$
 
 ---
 
@@ -338,31 +340,31 @@ Suppose our data is:
 
 Imagine that the underlying relationship is approximately:
 
-\[
+$$
 y=2x^2+3x+5
-\]
+$$
 
 Let's verify:
 
 For \(x=1\):
 
-\[
+$$
 y=2(1)^2+3(1)+5=10
-\]
+$$
 
 For \(x=2\):
 
-\[
+$$
 y=2(2)^2+3(2)+5=19
-\]
+$$
 
 If the actual observations contain noise, they will not exactly lie on the theoretical curve.
 
 The important point is that a degree-2 polynomial gives us:
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2
-\]
+$$
 
 The model learns \(w_0,w_1,w_2\) from the data.
 
@@ -374,7 +376,7 @@ For degree 3, include an intercept column.
 
 The transformed matrix becomes:
 
-\[
+$$
 X_{poly}=
 \begin{bmatrix}
 1 & x_1 & x_1^2 & x_1^3\\
@@ -382,13 +384,13 @@ X_{poly}=
 \vdots & \vdots & \vdots & \vdots\\
 1 & x_m & x_m^2 & x_m^3
 \end{bmatrix}
-\]
+$$
 
 The first column represents the intercept.
 
 We can write:
 
-\[
+$$
 \theta=
 \begin{bmatrix}
 w_0\\
@@ -396,23 +398,23 @@ w_1\\
 w_2\\
 w_3
 \end{bmatrix}
-\]
+$$
 
 Then the entire prediction operation becomes:
 
-\[
+$$
 \boxed{
 \hat{Y}=X_{poly}\theta
 }
-\]
+$$
 
 If the bias is stored separately, the implementation can instead use:
 
-\[
+$$
 \boxed{
 \hat{Y}=X_{poly}W+b
 }
-\]
+$$
 
 Both formulations represent the same basic model.
 
@@ -422,41 +424,41 @@ Both formulations represent the same basic model.
 
 Suppose we have a degree-2 model:
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2
-\]
+$$
 
 Given:
 
-\[
+$$
 w_0=5,\quad w_1=3,\quad w_2=2
-\]
+$$
 
 and:
 
-\[
+$$
 x=4
-\]
+$$
 
 Then:
 
-\[
+$$
 \hat{y}=5+3(4)+2(4^2)
-\]
+$$
 
-\[
+$$
 =5+12+32
-\]
+$$
 
-\[
+$$
 =49
-\]
+$$
 
 Therefore:
 
-\[
+$$
 \boxed{\hat{y}=49}
-\]
+$$
 
 For multiple observations, NumPy can perform the same calculation using vectorized matrix operations.
 
@@ -468,13 +470,13 @@ The model needs a way to measure how wrong its predictions are.
 
 For regression, Mean Squared Error (MSE) is commonly used:
 
-\[
+$$
 \boxed{
 MSE=
 \frac{1}{m}
 \sum_{i=1}^{m}(y_i-\hat{y}_i)^2
 }
-\]
+$$
 
 where:
 
@@ -486,47 +488,47 @@ where:
 
 Suppose an observation has:
 
-\[
+$$
 y=10,\quad \hat{y}=8
-\]
+$$
 
 The error is:
 
-\[
+$$
 10-8=2
-\]
+$$
 
 Another observation:
 
-\[
+$$
 y=10,\quad \hat{y}=12
-\]
+$$
 
 has:
 
-\[
+$$
 10-12=-2
-\]
+$$
 
 If we simply averaged errors:
 
-\[
+$$
 \frac{2+(-2)}{2}=0
-\]
+$$
 
 which would incorrectly suggest no error.
 
 Squaring gives:
 
-\[
+$$
 2^2=4
-\]
+$$
 
 and:
 
-\[
+$$
 (-2)^2=4
-\]
+$$
 
 so the errors do not cancel.
 
@@ -536,9 +538,9 @@ so the errors do not cancel.
 
 Our model contains parameters:
 
-\[
+$$
 w_0,w_1,\ldots,w_n
-\]
+$$
 
 Initially, we do not know the correct values.
 
@@ -558,48 +560,48 @@ This is the basic idea behind Gradient Descent.
 
 Consider:
 
-\[
+$$
 \hat{y}_i=w_0+w_1x_i+w_2x_i^2+\cdots+w_nx_i^n
-\]
+$$
 
 The MSE is:
 
-\[
+$$
 L=
 \frac{1}{m}
 \sum_{i=1}^{m}
 (y_i-\hat{y}_i)^2
-\]
+$$
 
 For convenience, define the error:
 
-\[
+$$
 e_i=\hat{y}_i-y_i
-\]
+$$
 
 Then:
 
-\[
+$$
 L=
 \frac{1}{m}
 \sum_{i=1}^{m}e_i^2
-\]
+$$
 
 ## Gradient with respect to a weight
 
 For a particular weight \(w_j\):
 
-\[
+$$
 \frac{\partial L}{\partial w_j}
 =
 \frac{2}{m}
 \sum_{i=1}^{m}
 (\hat{y}_i-y_i)x_i^j
-\]
+$$
 
 Therefore:
 
-\[
+$$
 \boxed{
 \frac{\partial L}{\partial w_j}
 =
@@ -607,7 +609,7 @@ Therefore:
 \sum_{i=1}^{m}
 (\hat{y}_i-y_i)x_i^j
 }
-\]
+$$
 
 This is the central gradient equation for each polynomial weight.
 
@@ -615,7 +617,7 @@ This is the central gradient equation for each polynomial weight.
 
 Since the bias has no \(x\) term:
 
-\[
+$$
 \boxed{
 \frac{\partial L}{\partial w_0}
 =
@@ -623,13 +625,13 @@ Since the bias has no \(x\) term:
 \sum_{i=1}^{m}
 (\hat{y}_i-y_i)
 }
-\]
+$$
 
 If we represent the intercept as a parameter \(w_0\), this is simply the \(j=0\) case because:
 
-\[
+$$
 x^0=1
-\]
+$$
 
 ---
 
@@ -639,29 +641,29 @@ Once we calculate the gradients, update each parameter.
 
 For a weight:
 
-\[
+$$
 \boxed{
 w_j \leftarrow
 w_j-\alpha
 \frac{\partial L}{\partial w_j}
 }
-\]
+$$
 
 For the bias:
 
-\[
+$$
 \boxed{
 w_0 \leftarrow
 w_0-\alpha
 \frac{\partial L}{\partial w_0}
 }
-\]
+$$
 
 where:
 
-\[
+$$
 \alpha=\text{learning rate}
-\]
+$$
 
 The learning rate controls how large each update is.
 
@@ -705,49 +707,49 @@ Mathematically:
 
 ### Step 1 — Transform features
 
-\[
+$$
 X \rightarrow X_{poly}
-\]
+$$
 
 ### Step 2 — Initialize parameters
 
-\[
+$$
 W=0,\quad b=0
-\]
+$$
 
 ### Step 3 — Predict
 
-\[
+$$
 \hat{Y}=X_{poly}W+b
-\]
+$$
 
 ### Step 4 — Calculate error
 
-\[
+$$
 E=\hat{Y}-Y
-\]
+$$
 
 ### Step 5 — Calculate gradients
 
-\[
+$$
 dW=
 \frac{2}{m}X_{poly}^TE
-\]
+$$
 
-\[
+$$
 db=
 \frac{2}{m}\sum E
-\]
+$$
 
 ### Step 6 — Update parameters
 
-\[
+$$
 W\leftarrow W-\alpha dW
-\]
+$$
 
-\[
+$$
 b\leftarrow b-\alpha db
-\]
+$$
 
 ### Step 7 — Repeat
 
@@ -761,33 +763,33 @@ Polynomial Regression can also be solved without Gradient Descent using the Norm
 
 For:
 
-\[
+$$
 Y=X\theta
-\]
+$$
 
 the least-squares solution is:
 
-\[
+$$
 \boxed{
 \theta=(X^TX)^{-1}X^TY
 }
-\]
+$$
 
 However, directly calculating:
 
-\[
+$$
 (X^TX)^{-1}
-\]
+$$
 
 can be numerically problematic and computationally expensive for large feature matrices.
 
 A more numerically stable approach uses the pseudoinverse:
 
-\[
+$$
 \boxed{
 \theta=X^+Y
 }
-\]
+$$
 
 where \(X^+\) is the Moore-Penrose pseudoinverse.
 
@@ -825,19 +827,19 @@ Polynomial Regression becomes more interesting when there are multiple input fea
 
 Suppose we have:
 
-\[
+$$
 x_1,\ x_2
-\]
+$$
 
 For degree 2, polynomial expansion can include:
 
-\[
+$$
 x_1,\quad x_2,\quad x_1^2,\quad x_2^2,\quad x_1x_2
-\]
+$$
 
 The model can therefore be:
 
-\[
+$$
 \hat{y}
 =
 w_0+
@@ -846,13 +848,13 @@ w_2x_2+
 w_3x_1^2+
 w_4x_2^2+
 w_5x_1x_2
-\]
+$$
 
 The cross-term:
 
-\[
+$$
 x_1x_2
-\]
+$$
 
 is called an **interaction term**.
 
@@ -866,33 +868,33 @@ The polynomial degree controls the flexibility of the model.
 
 ### Degree 1
 
-\[
+$$
 \hat{y}=w_0+w_1x
-\]
+$$
 
 This is ordinary Linear Regression.
 
 ### Degree 2
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2
-\]
+$$
 
 Can represent a basic curve.
 
 ### Degree 3
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2+w_3x^3
-\]
+$$
 
 Can represent more complex curvature.
 
 ### Higher degrees
 
-\[
+$$
 \hat{y}=w_0+w_1x+\cdots+w_nx^n
-\]
+$$
 
 provide increasingly flexible functions.
 
@@ -974,23 +976,23 @@ Polynomial features can grow extremely quickly.
 
 Suppose:
 
-\[
+$$
 x=100
-\]
+$$
 
 Then:
 
-\[
+$$
 x^2=10,000
-\]
+$$
 
-\[
+$$
 x^3=1,000,000
-\]
+$$
 
-\[
+$$
 x^4=100,000,000
-\]
+$$
 
 Large feature magnitudes can make Gradient Descent difficult to optimize.
 
@@ -1004,11 +1006,11 @@ This can make optimization unstable or force us to use an extremely small learni
 
 A common approach is standardization:
 
-\[
+$$
 \boxed{
 z=\frac{x-\mu}{\sigma}
 }
-\]
+$$
 
 where:
 
@@ -1019,15 +1021,15 @@ Polynomial features can then be generated from the scaled feature.
 
 For example:
 
-\[
+$$
 z,\ z^2,\ z^3
-\]
+$$
 
 instead of:
 
-\[
+$$
 x,\ x^2,\ x^3
-\]
+$$
 
 Feature scaling is especially important for higher-degree polynomial models trained using Gradient Descent.
 
@@ -1041,18 +1043,18 @@ Regularization adds a penalty to discourage excessively large parameter values.
 
 For example, Ridge Regression adds an L2 penalty:
 
-\[
+$$
 \boxed{
 L=
 MSE+\lambda\sum_{j=1}^{n}w_j^2
 }
-\]
+$$
 
 where:
 
-\[
+$$
 \lambda \geq 0
-\]
+$$
 
 controls the strength of regularization.
 
@@ -1084,17 +1086,17 @@ Prediction
 
 Uses:
 
-\[
+$$
 MSE+\lambda\sum w_j^2
-\]
+$$
 
 ### Polynomial + Lasso
 
 Uses:
 
-\[
+$$
 MSE+\lambda\sum |w_j|
-\]
+$$
 
 Ridge tends to shrink coefficients toward zero, while Lasso can drive some coefficients exactly to zero.
 
@@ -1124,58 +1126,58 @@ Common regression metrics include:
 
 The coefficient of determination is:
 
-\[
+$$
 \boxed{
 R^2=
 1-
 \frac{\sum_{i=1}^{m}(y_i-\hat{y}_i)^2}
 {\sum_{i=1}^{m}(y_i-\bar{y})^2}
 }
-\]
+$$
 
 where:
 
-\[
+$$
 \bar{y}=\frac{1}{m}\sum_{i=1}^{m}y_i
-\]
+$$
 
 The numerator is the **Residual Sum of Squares**:
 
-\[
+$$
 RSS=
 \sum(y_i-\hat{y}_i)^2
-\]
+$$
 
 The denominator is the **Total Sum of Squares**:
 
-\[
+$$
 TSS=
 \sum(y_i-\bar{y})^2
-\]
+$$
 
 Therefore:
 
-\[
+$$
 \boxed{
 R^2=1-\frac{RSS}{TSS}
 }
-\]
+$$
 
 ### Interpretation
 
 An \(R^2\) of:
 
-\[
+$$
 1
-\]
+$$
 
 means the predictions match the observed target values perfectly on that evaluated dataset.
 
 An \(R^2\) close to:
 
-\[
+$$
 0
-\]
+$$
 
 means the model explains little of the target variation relative to the mean baseline.
 
@@ -1191,14 +1193,14 @@ Ordinary \(R^2\) can increase when additional predictors are introduced, even wh
 
 Adjusted \(R^2\) accounts for the number of predictors:
 
-\[
+$$
 \boxed{
 \bar{R}^2=
 1-
 (1-R^2)
 \frac{m-1}{m-p-1}
 }
-\]
+$$
 
 where:
 
@@ -1213,13 +1215,13 @@ Polynomial expansion can create many predictors, so adjusted \(R^2\) can be usef
 
 ## Mean Absolute Error
 
-\[
+$$
 \boxed{
 MAE=
 \frac{1}{m}
 \sum_{i=1}^{m}|y_i-\hat{y}_i|
 }
-\]
+$$
 
 MAE represents the average absolute prediction error.
 
@@ -1227,13 +1229,13 @@ MAE represents the average absolute prediction error.
 
 ## Mean Squared Error
 
-\[
+$$
 \boxed{
 MSE=
 \frac{1}{m}
 \sum_{i=1}^{m}(y_i-\hat{y}_i)^2
 }
-\]
+$$
 
 MSE penalizes larger errors more strongly because errors are squared.
 
@@ -1241,11 +1243,11 @@ MSE penalizes larger errors more strongly because errors are squared.
 
 ## Root Mean Squared Error
 
-\[
+$$
 \boxed{
 RMSE=\sqrt{MSE}
 }
-\]
+$$
 
 RMSE has the same units as the target variable.
 
@@ -1261,9 +1263,9 @@ A robust machine learning workflow separates the data.
 
 Used to learn:
 
-\[
+$$
 W,b
-\]
+$$
 
 ### Validation set
 
@@ -1357,9 +1359,9 @@ For statistical inference, residual distributions and dependence should be exami
 
 Polynomial features such as:
 
-\[
+$$
 x,\ x^2,\ x^3
-\]
+$$
 
 can be highly correlated, especially when \(x\) is not centered or scaled.
 
@@ -1381,9 +1383,9 @@ The optimization can remain essentially the same.
 
 The major difference is the feature representation:
 
-\[
+$$
 X\rightarrow X_{poly}
-\]
+$$
 
 ---
 
@@ -1391,15 +1393,15 @@ X\rightarrow X_{poly}
 
 A model such as:
 
-\[
+$$
 \hat{y}=w_1x+w_2x^2
-\]
+$$
 
 cannot represent the same set of functions as:
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2
-\]
+$$
 
 unless the intercept is intentionally constrained to zero.
 
@@ -1411,15 +1413,15 @@ A high-degree polynomial can memorize training data and produce unstable predict
 
 Start with:
 
-\[
+$$
 degree=2
-\]
+$$
 
 then experiment with:
 
-\[
+$$
 3,\ 4,\ 5,\ldots
-\]
+$$
 
 and evaluate on unseen data.
 
@@ -1460,9 +1462,9 @@ They hide exactly the operations we want to understand.
 
 The mathematical model:
 
-\[
+$$
 \hat{Y}=X_{poly}W+b
-\]
+$$
 
 maps naturally to NumPy.
 
@@ -1470,9 +1472,9 @@ maps naturally to NumPy.
 
 Mathematics:
 
-\[
+$$
 X_{poly}=[X,X^2,X^3,\ldots,X^n]
-\]
+$$
 
 Conceptually:
 
@@ -1485,9 +1487,9 @@ X_poly = np.column_stack(features)
 
 Mathematics:
 
-\[
+$$
 \hat{Y}=X_{poly}W+b
-\]
+$$
 
 NumPy:
 
@@ -1503,11 +1505,11 @@ The `@` operator performs matrix multiplication.
 
 Mathematics:
 
-\[
+$$
 MSE=
 \frac{1}{m}
 \sum(Y-\hat{Y})^2
-\]
+$$
 
 NumPy:
 
@@ -1522,10 +1524,10 @@ loss = np.mean(error ** 2)
 
 Mathematics:
 
-\[
+$$
 dW=
 \frac{2}{m}X_{poly}^T(Y_{pred}-Y)
-\]
+$$
 
 NumPy:
 
@@ -1539,10 +1541,10 @@ dw = (2 / m) * (X_poly.T @ error)
 
 Mathematics:
 
-\[
+$$
 db=
 \frac{2}{m}\sum(Y_{pred}-Y)
-\]
+$$
 
 NumPy:
 
@@ -1556,13 +1558,13 @@ db = (2 / m) * np.sum(error)
 
 Mathematics:
 
-\[
+$$
 W\leftarrow W-\alpha dW
-\]
+$$
 
-\[
+$$
 b\leftarrow b-\alpha db
-\]
+$$
 
 NumPy:
 
@@ -1691,9 +1693,9 @@ The best way to understand Polynomial Regression is to experiment with it.
 
 Generate data approximately following:
 
-\[
+$$
 y=3x+5+\epsilon
-\]
+$$
 
 Train:
 
@@ -1709,9 +1711,9 @@ Observe whether higher degrees provide meaningful improvement.
 
 Generate:
 
-\[
+$$
 y=2x^2+3x+5+\epsilon
-\]
+$$
 
 Compare:
 
@@ -1730,9 +1732,9 @@ Observe the fitted curves and evaluation metrics.
 
 Generate:
 
-\[
+$$
 y=x^3-2x^2+3x+5+\epsilon
-\]
+$$
 
 Again compare different degrees.
 
@@ -1806,9 +1808,9 @@ This demonstrates why feature scaling matters for Gradient Descent.
 
 It adds powers of the input:
 
-\[
+$$
 x,x^2,x^3,\ldots,x^n
-\]
+$$
 
 ---
 
@@ -1816,9 +1818,9 @@ x,x^2,x^3,\ldots,x^n
 
 The original input is transformed:
 
-\[
+$$
 X\rightarrow X_{poly}
-\]
+$$
 
 and a linear model is fitted to the transformed features.
 
@@ -1828,9 +1830,9 @@ and a linear model is fitted to the transformed features.
 
 For example:
 
-\[
+$$
 \hat{y}=w_0+w_1x+w_2x^2
-\]
+$$
 
 produces a curved relationship between \(x\) and \(\hat y\).
 
@@ -1840,9 +1842,9 @@ produces a curved relationship between \(x\) and \(\hat y\).
 
 The weights:
 
-\[
+$$
 w_0,w_1,w_2
-\]
+$$
 
 appear linearly.
 
@@ -1931,11 +1933,13 @@ Once the basic implementation is working, the following topics are natural exten
 
 If you remember only one pipeline from this document, remember this:
 
-\[
+$$
 \boxed{
 X
 \rightarrow
-[X,X^2,\ldots,X^n]
+$$
+X,X^2,\ldots,X^n
+$$
 \rightarrow
 \text{Linear Model}
 \rightarrow
@@ -1947,7 +1951,7 @@ X
 \rightarrow
 \text{Parameter Updates}
 }
-\]
+$$
 
 Polynomial Regression is therefore not about creating an entirely new optimization algorithm.
 
