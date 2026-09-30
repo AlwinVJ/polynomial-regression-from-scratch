@@ -26,11 +26,13 @@ $$
 
 Where:
 
-* \(x\) = input feature
-* \(\hat{y}\) = predicted output
-* \(w_0\) = bias/intercept
-* \(w_1, w_2, \ldots, w_n\) = model weights
-* \(n\) = polynomial degree
+| Symbol | Meaning |
+|--------|---------|
+| $x$ | Input feature |
+| $\hat{y}$ | Predicted output |
+| $w_0$ | Bias / intercept |
+| $w_j$ | Weight corresponding to the $j$-th polynomial feature |
+| $n$ | Polynomial degree |
 
 Although the model produces a curved relationship with the original input, it is still **linear with respect to its parameters (weights)**.
 
